@@ -1,0 +1,10 @@
+<h2>Notice Board</h2>
+<ol>
+  <% @notices.each do |notice| %>
+    <li>Notice: <%= notice.heading %><br>
+     Details: <%= notice.message %><br>
+     Category: <%= notice.category.name %><br>
+     User: <%= notice.user.name %>
+    </li>
+  <% end %>
+</ol>
