@@ -23,3 +23,11 @@ li {
   padding-bottom: 15px;
 }
 
+.notice_heading {
+  font-weight: bold;
+}
+
+.notice_message {
+  border: double;
+  border-collapse: collapse;
+}
