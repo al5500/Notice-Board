@@ -13,10 +13,10 @@ class NoticesController < ApplicationController
   def create
     @notice = Notice.new notice_params
     @notice.user_id = @current_user.id
-    
-    cloudinary = Cloudinary::Uploader.upload(params[:notice]['cl_id'].path)
-    @notice.cl_id = cloudinary['public_id']
-  
+    if params[:notice]['file'].present?
+      cloudinary = Cloudinary::Uploader.upload(params[:notice]['file'].path)
+      @notice.cl_id = cloudinary['public_id']
+    end
     if @notice.save
       redirect_to '/notices'
     else

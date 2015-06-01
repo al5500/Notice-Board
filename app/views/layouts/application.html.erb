@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
   <title>NoticeboardApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="back_cont">
  <div class="container">
   <nav>
     <ul>
@@ -22,6 +24,7 @@
   <% end %>
 
   <%= yield %>
+ </div>
  </div>
 </body>
 </html>
