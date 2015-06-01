@@ -15,6 +15,11 @@
     <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
   </p>
 
+  <p>
+    <%= f.label :Image %>
+    <%= f.file_field :cl_id %>
+  </p>
+
   <p><%= @current_user.id %></p>
 
   <%= f.submit %>

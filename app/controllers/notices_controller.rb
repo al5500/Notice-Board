@@ -5,6 +5,9 @@ class NoticesController < ApplicationController
 
   def new
     @notice = Notice.new
+    unless @current_user
+      redirect_to '/users/new'
+    end
   end
 
   def create
@@ -29,6 +32,6 @@ class NoticesController < ApplicationController
 
   private
   def notice_params
-    params.require(:notice).permit(:heading, :message, :category_id)
+    params.require(:notice).permit(:heading, :message, :category_id, :cl_id)
   end
 end
