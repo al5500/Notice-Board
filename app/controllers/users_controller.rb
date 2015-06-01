@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   
-  # before_action :check_if_admin, :only => [:index]
+   before_action :check_if_admin, :only => [:index]
 
   def index
     @users = User.all
-    
   end
 
   def new
@@ -32,12 +31,15 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    user = User.find params[:id]
+    user.destroy
+    redirect_to users_path
+  end
+
   private 
   def user_params
     params.require(:user).permit(:name, :suburb, :email, :phone, :image, :password, :password_confirmation)
   end
 
-  def check_if_admin
-    redirect_to root_path unless @current_user.present? && @current_user.admin?
-  end
 end

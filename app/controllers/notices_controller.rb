@@ -11,10 +11,12 @@ class NoticesController < ApplicationController
   end
 
   def create
-
     @notice = Notice.new notice_params
     @notice.user_id = @current_user.id
-    Cloudinary::Uploader.upload(params[:notice]['cl_id'].path)
+    
+    cloudinary = Cloudinary::Uploader.upload(params[:notice]['cl_id'].path)
+    @notice.cl_id = cloudinary['public_id']
+  
     if @notice.save
       redirect_to '/notices'
     else
@@ -29,6 +31,9 @@ class NoticesController < ApplicationController
   end
 
   def destroy
+    notice = Notice.find params[:id]
+    notice.destroy
+    redirect_to notices_path
   end
 
   private

@@ -1,5 +1,7 @@
 <h2>All Categories</h2>
-<ol>
+<ol><% if @current_user && @current_user.admin? %>
+      <%= link_to('Create Category', '/categories/new') %>
+    <% end %>
   <% @categories.each do |category| %>
     <li><%= category.name %></li>
   <% end %>

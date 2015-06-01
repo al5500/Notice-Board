@@ -1,13 +1,16 @@
 <h2>Notice Board</h2>
-<h3><%= link_to('New Notice', '/notices/new') %></h3>
+  <% if @current_user %>
+    <h3><%= link_to('New Notice', '/notices/new') %></h3>
+  <% end %>
 <ol>
   <% @notices.each do |notice| %>
     <li><div class="notice_heading">Notice: <%= notice.heading %><br></div>
     User: <%= notice.user.name %> | Category: <% if notice.category %><%= notice.category.name %><% end %> | Time: <%= notice.created_at %><br>
      <div class="notice_message">Details: <%= notice.message %><br></div>
-     Image: <img src="<%= notice.cl_id %>">
-     <%= notice.cl_id %>
-     <% raise params.inspect %>
+     Image: <%= cl_image_tag(notice.cl_id) %>
+     <% if @current_user && @current_user.admin %>
+      <%= button_to('Delete Notice', notice, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %>
+     <% end %>
     </li>
   <% end %>
 </ol>
