@@ -5,7 +5,9 @@
     <li><div class="notice_heading">Notice: <%= notice.heading %><br></div>
     User: <%= notice.user.name %> | Category: <% if notice.category %><%= notice.category.name %><% end %> | Time: <%= notice.created_at %><br>
      <div class="notice_message">Details: <%= notice.message %><br></div>
-     Image: <%= notice.cl_id %>
+     Image: <img src="<%= notice.cl_id %>">
+     <%= notice.cl_id %>
+     <% raise params.inspect %>
     </li>
   <% end %>
 </ol>

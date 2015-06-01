@@ -11,9 +11,10 @@ class NoticesController < ApplicationController
   end
 
   def create
+
     @notice = Notice.new notice_params
     @notice.user_id = @current_user.id
-
+    Cloudinary::Uploader.upload(params[:notice]['cl_id'].path)
     if @notice.save
       redirect_to '/notices'
     else
