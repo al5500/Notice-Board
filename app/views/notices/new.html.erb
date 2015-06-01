@@ -1,28 +1,26 @@
 <h1>New Notice</h1>
-<%= form_for @notice do |f| %>
-  <p>
-    <%= f.label :heading %>
-    <%= f.text_field :heading %>
-  </p>
+<div class="new_notice">
+  <%= form_for @notice do |f| %>
+    <p>
+      <%= f.label :heading %>
+      <%= f.text_field :heading %>
+    </p>
 
-  <p>
-    <%= f.label :message %>
-    <%= f.text_area :message %>
-  </p>
+    <p>
+      <%= f.label :message %>
+      <%= f.text_area :message %>
+    </p>
 
-  <p>
-    <%= f.label :category_id %>
-    <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
-  </p>
+    <p>
+      <%= f.label :category_id %>
+      <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
+    </p>
 
-  <p>
-
-    <%= f.label :Image %>
-    <%= f.file_field :file %>
-
-  </p>
-
-  <p><%= @current_user.id %></p>
+    <p>
+      <%= f.label :Image %>
+      <%= f.file_field :file %>
+    </p>
 
   <%= f.submit %>
 <% end %>
+</div>

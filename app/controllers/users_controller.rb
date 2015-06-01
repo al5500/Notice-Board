@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = @current_user
-    render :new
+    render :edit
   end
 
   def create
