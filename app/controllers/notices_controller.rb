@@ -25,9 +25,21 @@ class NoticesController < ApplicationController
   end
 
   def edit
+    @notice = Notice.find params[:id]
   end
 
   def update 
+    notice = Notice.find params[:id]
+     if params[:notice]['file'].present?
+      cloudinary = Cloudinary::Uploader.upload(params[:notice]['file'].path)
+      notice.cl_id = cloudinary['public_id']
+    end
+    notice.update notice_params
+    redirect_to notice
+  end
+
+  def show 
+    @notice = Notice.find params[:id]
   end
 
   def destroy
