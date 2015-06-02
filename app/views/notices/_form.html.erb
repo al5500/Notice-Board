@@ -2,7 +2,7 @@
   <%= form_for @notice do |f| %>
     <p>
       <%= f.label :heading %>
-      <%= f.text_field :heading %>
+      <%= f.text_field :heading, :autofocus => true %>
     </p>
 
     <p>
@@ -18,6 +18,16 @@
     <p>
       <%= f.label :Image %>
       <%= f.file_field :file %>
+    </p>
+
+    <p>
+      <%= f.label :date_to %>
+      <%= f.date_select(:date_to) %>
+    </p>
+
+    <p>
+      <%= f.label :date_from %>
+      <%= f.date_select(:date_from) %>
     </p>
 
   <%= f.submit %>

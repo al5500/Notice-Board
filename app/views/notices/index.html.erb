@@ -4,11 +4,10 @@
   <% end %>
 <%= form_for '/notices', :method => "get" do |f| %>
    <p>
-      <%= f.label :category_id %>
-      <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
+      Sort by Category: <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
    </p>
    <p>
-     <%= f.submit 'Sort by Category'  %>
+     <%= f.submit 'Sort!'  %>
    </p>
 <% end %>
 <ol>
@@ -16,14 +15,20 @@
     <li><a href="/notices/<%= notice.id %>">
       <div class="notice_message">
         Notice:<%= notice.heading %><br>
-        User: <%= notice.user.name %> | Category: <% if notice.category %><%= notice.category.name %><% end %> | Time: <%= notice.created_at %><br>
         Details: <%= notice.message %><br>
+        User: <%= notice.user.name %> | Category: <% if notice.category %><%= notice.category.name %><% end %><br>
+        <% if notice.date_to %> 
+          Date to: <%= notice.date_to.strftime "%b %d, %Y" %> |
+        <% end %>
+        <% if notice.date_from %>
+         Date from: <%= notice.date_from.strftime "%b %d, %Y" %><br>
+        <% end %>
         <%= cl_image_tag(notice.cl_id) %>
       </div></a>
       
      <% if @current_user && @current_user.admin %>
-      <%= link_to('Edit', edit_notice_path(notice)) %>
-      <%= button_to('Delete Notice', notice, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %>
+     <br> <%= link_to('Edit', edit_notice_path(notice)) %>
+      <%= button_to('Delete Notice', notice, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %> 
      <% end %>
     </li>
   <% end %>

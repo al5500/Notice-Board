@@ -59,6 +59,6 @@ class NoticesController < ApplicationController
 
   private
   def notice_params
-    params.require(:notice).permit(:heading, :message, :category_id, :cl_id)
+    params.require(:notice).permit(:heading, :message, :category_id, :cl_id, :date_from, :date_to)
   end
 end

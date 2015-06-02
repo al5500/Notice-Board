@@ -1,17 +1,27 @@
+<div class="notice_message">
 <h1><%= @notice.heading %></h1>
   <ul>
-    User: <%= @notice.user.name %> 
-    Category: <% if @notice.category %><%= @notice.category.name %><% end %> 
-    Time: <%= @notice.created_at %><br>
-    Details: <%= @notice.message %><br>
+    Details: <%= @notice.message %><br> 
+    User: <%= @notice.user.name %> |
+    Category: <% if @notice.category %><%= @notice.category.name %><% end %><br> 
+    
+   <% if @notice.date_to %> 
+    Date to: <%= @notice.date_to.strftime "%b %d, %Y" %> |
+   <% end %>
+   <% if @notice.date_from %>
+    Date from: <%= @notice.date_from.strftime "%b %d, %Y" %><br>
+   <% end %>
+    
     <%= cl_image_tag(@notice.cl_id) %>
+</div>
     <% if @current_user %>
       <% if @notice.user_id == @current_user.id || @current_user.admin %>
-        <%= link_to('Edit', edit_notice_path(@notice)) %>
+       <br><%= link_to('Edit', edit_notice_path(@notice)) %>
         <%= button_to('Delete Notice', notice, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %>
       <% end %>
     <% end %>
   </ul> 
+  
   <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
