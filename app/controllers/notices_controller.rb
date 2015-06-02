@@ -1,6 +1,15 @@
 class NoticesController < ApplicationController
   def index
-    @notices = Notice.all
+    if params["/notices"]
+      id = params["/notices"]["category_id"].to_i
+      if id != 0
+        @notices = Category.find( id ).notices
+      else 
+        @notices = Notice.all
+      end
+    else 
+      @notices = Notice.all
+    end
   end
 
   def new

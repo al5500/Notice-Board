@@ -1,10 +1,18 @@
 <h2>All Categories</h2>
-<ol><% if @current_user && @current_user.admin? %>
-      <%= link_to('Create Category', '/categories/new') %>
-    <% end %>
-  <% @categories.each do |category| %>
-    <li><%= category.name %></li>
+<div class="category_div">
+<ol>  
+  <% if @current_user && @current_user.admin? %>
+    <%= link_to('Create Category', '/categories/new') %>
   <% end %>
+  
+  <% @categories.each do |category| %>
+    <li>
+      <%= category.name %>
+          <% if @current_user && @current_user.admin? %>
+            <%= button_to('Delete Category', category, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %>
+          <% end %>
+      <% end %>
+    </li>
 </ol>
-
+</div>
 

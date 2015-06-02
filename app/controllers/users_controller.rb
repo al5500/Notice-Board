@@ -3,6 +3,7 @@ class UsersController < ApplicationController
    before_action :check_if_admin, :only => [:index]
 
   def index
+
     @users = User.all
   end
 

@@ -2,6 +2,15 @@
   <% if @current_user %>
     <h3><%= link_to('New Notice', '/notices/new') %></h3>
   <% end %>
+<%= form_for '/notices', :method => "get" do |f| %>
+   <p>
+      <%= f.label :category_id %>
+      <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
+   </p>
+   <p>
+     <%= f.submit 'Sort by Category'  %>
+   </p>
+<% end %>
 <ol>
   <% @notices.each do |notice| %>
     <li><a href="/notices/<%= notice.id %>">
