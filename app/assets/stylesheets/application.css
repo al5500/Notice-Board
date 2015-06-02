@@ -2,7 +2,7 @@
  *= require_tree .
  *= require_self
  */
-@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Lato);
 html {
   font-family: Lato;
   background-image: url('CB.gif');
