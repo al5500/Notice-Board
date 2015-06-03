@@ -2,7 +2,7 @@
 
   
   <% if @current_user %>
-    <h3><%= link_to('New Notice', '/notices/new') %></h3>
+    <h3><%= link_to('Post New Notice', '/notices/new') %></h3>
   <% end %>
 <%= form_for '/notices', :method => "get" do |f| %>
    <p>

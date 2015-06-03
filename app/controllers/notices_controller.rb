@@ -5,10 +5,10 @@ class NoticesController < ApplicationController
       if id != 0
         @notices = Category.find( id ).notices
       else 
-        @notices = Notice.all
+        @notices = all_or_date
       end
     else 
-      @notices = Notice.all
+      @notices = all_or_date
     end
   end
 
@@ -60,5 +60,17 @@ class NoticesController < ApplicationController
   private
   def notice_params
     params.require(:notice).permit(:heading, :message, :category_id, :cl_id, :date_from, :date_to)
+  end
+
+  def all_or_date
+    time = Time.new
+    date_from = time
+    date_to   = time.next_year
+    if params["/notices"]
+      date_from = params["/notices"]["date_from"]
+      date_to   = params["/notices"]["date_to"]
+    end
+    Notice.where("date_from >= :date_from AND date_to <= :date_to",
+      {date_from: date_from, date_to: date_to})
   end
 end

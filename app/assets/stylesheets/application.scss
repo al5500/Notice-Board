@@ -1,3 +1,5 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
 /*
  *= require_tree .
  *= require_self
@@ -57,6 +59,7 @@ nav {
   margin: 0 auto;
   background-color: rgba(112, 81, 44, 0.8);
   height: 2em;
+  margin-bottom: 30px;
 }
 
 .new_notice {
@@ -66,6 +69,16 @@ nav {
   text-align: left;
 }
 
-.category_div {
+#disqus_thread {
+  border: double;
+  background-color: rgba(255, 255, 255, 0.8);
+  max-width: 900px;
+  color: black;
+  margin-left: 25px;
+}
 
+#dsq-2 {
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 90%;
 }
