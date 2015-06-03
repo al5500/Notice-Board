@@ -1,4 +1,6 @@
 <h2>Notice Board</h2>
+
+  
   <% if @current_user %>
     <h3><%= link_to('New Notice', '/notices/new') %></h3>
   <% end %>
@@ -17,11 +19,11 @@
         Notice:<%= notice.heading %><br>
         Details: <%= notice.message %><br>
         User: <%= notice.user.name %> | Category: <% if notice.category %><%= notice.category.name %><% end %><br>
-        <% if notice.date_to %> 
-          Date to: <%= notice.date_to.strftime "%b %d, %Y" %> |
-        <% end %>
         <% if notice.date_from %>
-         Date from: <%= notice.date_from.strftime "%b %d, %Y" %><br>
+         Date from: <%= notice.date_from.strftime "%b %d, %Y" %> |
+        <% end %>
+        <% if notice.date_to %> 
+          Date to: <%= notice.date_to.strftime "%b %d, %Y" %><br>
         <% end %>
         <%= cl_image_tag(notice.cl_id) %>
       </div></a>
