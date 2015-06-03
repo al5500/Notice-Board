@@ -1,15 +1,6 @@
 class NoticesController < ApplicationController
   def index
-    if params["/notices"]
-      id = params["/notices"]["category_id"].to_i
-      if id != 0
-        @notices = Category.find( id ).notices 
-      else 
-        @notices = all_or_date
-      end
-    else 
-      @notices = all_or_date
-    end
+    @notices = all_or_date
   end
 
   def new
@@ -64,13 +55,19 @@ class NoticesController < ApplicationController
 
    def all_or_date
     today = Time.now
-    
     if params["/notices"]
-      date_from = params["/notices"]["date_from"]
-      date_to   = params["/notices"]["date_to"]
+      id = params["/notices"]["category_id"].to_i
+      if id != 0
+        @notices =   Notice.where("date_from <= :today AND date_to >= :today AND category_id = :id",
+          {today: today, id: id})
+      else 
+        @notices = Notice.where("date_from <= :today AND date_to >= :today",
+          {today: today})
+      end
+    else
+       @notices = Notice.where("date_from <= :today AND date_to >= :today",
+        {today: today})
     end
-    Notice.where("date_from <= :today AND date_to >= :today",
-      {today: today})
   end
  
 end
