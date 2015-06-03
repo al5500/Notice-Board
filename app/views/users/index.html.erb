@@ -5,7 +5,8 @@
         Username: <%= user.name %><br>
         Suburb: <%= user.suburb %><br>
         Email: <%= user.email %><br>
-        Phone: <%= user.phone %>
+        Phone: <%= user.phone %><br>
+        Admin: <%= user.admin %>
         <%= button_to('Delete User', user, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %>
       </li>
     <% end %>
