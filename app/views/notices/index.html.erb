@@ -7,7 +7,7 @@
 <%= form_for '/notices', :method => "get" do |f| %>
    <p>
       Select by Category: <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
-     <%= f.submit 'Select!'  %>
+     <%= f.submit 'Select!' %>
    </p>
 <% end %>
 <ol>
