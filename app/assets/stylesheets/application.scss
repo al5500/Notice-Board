@@ -17,12 +17,33 @@ li {
 }
 
 .notice_message {
-  border: double;
+  border: ridge;
+  border-color: rgba(112, 81, 44, 0.9);
   background-color: rgba(255, 255, 255, 0.8);
   max-width: 900px;
   color: black;
   display: inline-block;
   margin: 0 auto;
+}
+
+.notice_message:hover {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.notice_message:hover, .notice_message:focus, .notice_message:active {
+  box-shadow: 0 15px 15px -10px rgba(0, 0, 0, 0.9);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 a {
@@ -44,7 +65,6 @@ form label {
 
 nav {
   box-shadow: 0px 0px 15px black;
-
 }
 
 .new_notice {
@@ -55,7 +75,8 @@ nav {
 }
 
 #disqus_thread {
-  border: double;
+  border: ridge;
+  border-color: rgba(112, 81, 44, 0.9);
   background-color: rgba(255, 255, 255, 0.8);
   max-width: 900px;
   color: black;
@@ -73,16 +94,14 @@ nav {
   margin: 0 auto;
 }
 
-.container-fluid {
-  background-color: rgba(112, 81, 44, 0.8);
-  
-}
 .navbar-default {
-  background-color: #664C4C;
+  background-color: rgba(112, 81, 44, 0.8);
   border-color: #544545;
-  color: #FFF;
 }
 
-nav li a {
-  color: #FFF;
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+  margin-left: 100px;
 }
+
+

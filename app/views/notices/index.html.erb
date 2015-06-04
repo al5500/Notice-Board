@@ -24,7 +24,7 @@
           Date to: <%= notice.date_to.strftime "%b %d, %Y" %><br>
         <% end %>
         <%= cl_image_tag(notice.cl_id) %>
-      </div></a>
+        </div></a>
       
      <% if @current_user && @current_user.admin %>
      <br> <%= link_to('Edit', edit_notice_path(notice)) %>
