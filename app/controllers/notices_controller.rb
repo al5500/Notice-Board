@@ -40,6 +40,7 @@ class NoticesController < ApplicationController
 
   def show 
     @notice = Notice.find params[:id]
+    @user = @notice.user
   end
 
   def destroy
@@ -58,7 +59,7 @@ class NoticesController < ApplicationController
     if params["/notices"]
       id = params["/notices"]["category_id"].to_i
       if id != 0
-        @notices =   Notice.where("date_from <= :today AND date_to >= :today AND category_id = :id",
+        @notices = Notice.where("date_from <= :today AND date_to >= :today AND category_id = :id",
           {today: today, id: id})
       else 
         @notices = Notice.where("date_from <= :today AND date_to >= :today",

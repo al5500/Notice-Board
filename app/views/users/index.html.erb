@@ -7,7 +7,7 @@
         Email: <%= user.email %><br>
         Phone: <%= user.phone %><br>
         Admin: <%= user.admin %>
-        <%= button_to('Delete User', user, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %>
+        <%= button_to('Delete User', @reservation, :method => 'delete', :data => {:confirm => 'You sure homie???'}) %>
       </li>
     <% end %>
   </ol>

@@ -32,8 +32,8 @@
 #
 
 Rails.application.routes.draw do
-  resources :categories
-  resources :notices
+   resources :categories
+   resources :notices
    root :to => 'pages#home'
    
    resources :users, :except => [:edit] do

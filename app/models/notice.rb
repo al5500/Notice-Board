@@ -9,6 +9,9 @@
 #  user_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  cl_id       :string
+#  date_from   :datetime
+#  date_to     :datetime
 #
 
 class Notice < ActiveRecord::Base

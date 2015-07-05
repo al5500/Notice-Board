@@ -4,12 +4,14 @@
   <% if @current_user %>
     <h3><%= link_to('Post New Notice', '/notices/new') %></h3>
   <% end %>
-<%= form_for '/notices', :method => "get" do |f| %>
-   <p>
+<br>
+  <p>
+    <%= form_for '/notices', :method => "get" do |f| %>
       Select by Category: <%= f.select :category_id, Category.all.map {|category|[category.name, category.id]}, :include_blank => true %>
-     <%= f.submit 'Select!' %>
-   </p>
-<% end %>
+      <%= f.submit 'Select!' %>
+    <% end %> 
+  </p>
+<br>
 <ol>
   <% @notices.each do |notice| %>
     <li><a href="/notices/<%= notice.id %>">
