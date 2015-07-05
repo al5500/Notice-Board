@@ -6,13 +6,13 @@
     Location: <%= @notice.user.address %> |
     Category: <% if @notice.category %><%= @notice.category.name %><% end %><br> 
     
-   <% if @notice.date_to %> 
-    Date to: <%= @notice.date_to.strftime "%b %d, %Y" %> |
-   <% end %>
    <% if @notice.date_from %>
-    Date from: <%= @notice.date_from.strftime "%b %d, %Y" %><br>
+    Date from: <%= @notice.date_from.strftime "%b %d, %Y" %>
+   <% end %> |
+   <% if @notice.date_to %> 
+    Date to: <%= @notice.date_to.strftime "%b %d, %Y" %> 
    <% end %>
-    
+    <br>
     <%= cl_image_tag(@notice.cl_id) %>
     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
 </div>

@@ -1,12 +1,8 @@
-<h2>Notice Board</h2>
-
-  
-  <% if @current_user %>
+ <% if @current_user %>
     <h3><%= link_to('Post New Notice', '/notices/new') %></h3>
   <% end %>
-<br>
-<ol>
-  <% @notices.each do |notice| %>
+ <ol>
+ <% notices.each do |notice| %>
     <li><a href="/notices/<%= notice.id %>">
       <div class="notice_message">
         Notice: <%= notice.heading %><br>
@@ -27,4 +23,5 @@
      <% end %>
     </li>
   <% end %>
-</ol>
+</ol> 
+
